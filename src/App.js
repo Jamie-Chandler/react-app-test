@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Import Components
 import Tweet from "./components/Tweet";
@@ -8,12 +8,17 @@ import CreateTweet from "./components/CreateTweet";
 function App() {
   //Write normal JS here!
   const name = "Jamie Chandler";
-  const message = "This is the message variable";
+  const [textInput, setTextInput] = useState("");
+  const [tweets, setTweets] = useState([]);
   return (
-    <div className="box">
-      <h1>Hello React {name}</h1>
-      <CreateTweet />
-      <TweetList name={name} message={message} />
+    <div>
+      <CreateTweet
+        textInput={textInput}
+        setTextInput={setTextInput}
+        tweets={tweets}
+        setTweets={setTweets}
+      />
+      <TweetList name={name} tweets={tweets} setTweets={setTweets} />
     </div>
   );
 }
